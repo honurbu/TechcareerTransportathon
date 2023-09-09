@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.API\\JwtUser.API.csproj": {}
+    "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.API\\JwtUser.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.API\\JwtUser.API.csproj": {
+    "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.API\\JwtUser.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.API\\JwtUser.API.csproj",
+        "projectUniqueName": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.API\\JwtUser.API.csproj",
         "projectName": "JwtUser.API",
-        "projectPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.API\\JwtUser.API.csproj",
+        "projectPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.API\\JwtUser.API.csproj",
         "packagesPath": "C:\\Users\\Onur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.API\\obj\\",
+        "outputPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Onur\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Service\\JwtUser.Service.csproj": {
-                "projectPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Service\\JwtUser.Service.csproj"
+              "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Service\\JwtUser.Service.csproj": {
+                "projectPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Service\\JwtUser.Service.csproj"
               }
             }
           }
@@ -102,14 +102,14 @@
         }
       }
     },
-    "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj": {
+    "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj",
         "projectName": "JwtUser.Core",
-        "projectPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj",
+        "projectPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj",
         "packagesPath": "C:\\Users\\Onur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Core\\obj\\",
+        "outputPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Onur\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -152,6 +152,10 @@
               "target": "Package",
               "version": "[7.0.10, )"
             },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.10, )"
@@ -183,14 +187,14 @@
         }
       }
     },
-    "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Repository\\JwtUser.Repository.csproj": {
+    "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Repository\\JwtUser.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Repository\\JwtUser.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Repository\\JwtUser.Repository.csproj",
         "projectName": "JwtUser.Repository",
-        "projectPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Repository\\JwtUser.Repository.csproj",
+        "projectPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Repository\\JwtUser.Repository.csproj",
         "packagesPath": "C:\\Users\\Onur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Repository\\obj\\",
+        "outputPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Onur\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -207,8 +211,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj": {
-                "projectPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj"
+              "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj": {
+                "projectPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj"
               }
             }
           }
@@ -268,14 +272,14 @@
         }
       }
     },
-    "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Service\\JwtUser.Service.csproj": {
+    "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Service\\JwtUser.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Service\\JwtUser.Service.csproj",
+        "projectUniqueName": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Service\\JwtUser.Service.csproj",
         "projectName": "JwtUser.Service",
-        "projectPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Service\\JwtUser.Service.csproj",
+        "projectPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Service\\JwtUser.Service.csproj",
         "packagesPath": "C:\\Users\\Onur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Service\\obj\\",
+        "outputPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Onur\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -292,8 +296,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Repository\\JwtUser.Repository.csproj": {
-                "projectPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Repository\\JwtUser.Repository.csproj"
+              "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Repository\\JwtUser.Repository.csproj": {
+                "projectPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Repository\\JwtUser.Repository.csproj"
               }
             }
           }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using JwtUser.Core.DTOs.Request;
+using JwtUser.Core.DTOs.Response;
 using JwtUser.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace JwtUser.Service.Mapping
         public MapProfile()
         {
             CreateMap<Transport, AddTransportDto>().ReverseMap();
+            CreateMap<Cars, CarsDto>().ReverseMap();
+            CreateMap<Personal, PersonalDto>().ReverseMap();
         }
     }
 }

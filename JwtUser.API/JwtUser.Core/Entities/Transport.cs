@@ -19,6 +19,9 @@ namespace JwtUser.Core.Entities
 
         public string Directions { get; set; }      //adres tarifi
 
+        public int itemCount { get; set; }
+        public int packageCount { get; set; }
+
 
         //[JsonIgnore]
         public int StreetId { get; set; }
@@ -54,6 +57,8 @@ namespace JwtUser.Core.Entities
 
         [JsonIgnore]
         public AppUser AppUser { get; set; }
+        
+
 
     }
 }

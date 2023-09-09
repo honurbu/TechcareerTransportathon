@@ -22,6 +22,76 @@ namespace JwtUser.Repository.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("JwtUser.Core.Entities.Appellation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Appellations");
+                });
+
+            modelBuilder.Entity("JwtUser.Core.Entities.Application", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CompanyId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("TransportId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TransportTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("TransportId");
+
+                    b.ToTable("Applications");
+                });
+
+            modelBuilder.Entity("JwtUser.Core.Entities.Cars", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Brand")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Capacity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Model")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Plate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cars");
+                });
+
             modelBuilder.Entity("JwtUser.Core.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -106,6 +176,36 @@ namespace JwtUser.Repository.Migrations
                     b.ToTable("PackageHelpers");
                 });
 
+            modelBuilder.Entity("JwtUser.Core.Entities.Personal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AppellationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DrivingLicence")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppellationId");
+
+                    b.ToTable("Personals");
+                });
+
             modelBuilder.Entity("JwtUser.Core.Entities.Street", b =>
                 {
                     b.Property<int>("Id")
@@ -179,6 +279,12 @@ namespace JwtUser.Repository.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("StreetId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("itemCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("packageCount")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -420,6 +526,34 @@ namespace JwtUser.Repository.Migrations
                     b.HasDiscriminator().HasValue("AppUser");
                 });
 
+            modelBuilder.Entity("JwtUser.Core.Entities.Application", b =>
+                {
+                    b.HasOne("JwtUser.Core.Entities.AppUser", "Company")
+                        .WithMany("Applications")
+                        .HasForeignKey("CompanyId");
+
+                    b.HasOne("JwtUser.Core.Entities.Transport", "Transports")
+                        .WithMany()
+                        .HasForeignKey("TransportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+
+                    b.Navigation("Transports");
+                });
+
+            modelBuilder.Entity("JwtUser.Core.Entities.Personal", b =>
+                {
+                    b.HasOne("JwtUser.Core.Entities.Appellation", "Appellation")
+                        .WithMany("Personal")
+                        .HasForeignKey("AppellationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Appellation");
+                });
+
             modelBuilder.Entity("JwtUser.Core.Entities.Street", b =>
                 {
                     b.HasOne("JwtUser.Core.Entities.Town", "Towns")
@@ -544,6 +678,11 @@ namespace JwtUser.Repository.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("JwtUser.Core.Entities.Appellation", b =>
+                {
+                    b.Navigation("Personal");
+                });
+
             modelBuilder.Entity("JwtUser.Core.Entities.Category", b =>
                 {
                     b.Navigation("Transports");
@@ -576,6 +715,8 @@ namespace JwtUser.Repository.Migrations
 
             modelBuilder.Entity("JwtUser.Core.Entities.AppUser", b =>
                 {
+                    b.Navigation("Applications");
+
                     b.Navigation("Transports");
                 });
 #pragma warning restore 612, 618

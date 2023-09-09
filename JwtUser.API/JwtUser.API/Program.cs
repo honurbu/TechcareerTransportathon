@@ -28,6 +28,14 @@ builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 builder.Services.AddScoped<ITransportService, TransportService>();
 builder.Services.AddScoped(typeof(ITransportRepository), typeof(TransportRepository));
 
+builder.Services.AddScoped<ICarsService, CarsService>();
+builder.Services.AddScoped<IPersonalService, PersonalService>();
+builder.Services.AddScoped<IApplicationService, ApplicationService>();
+
+builder.Services.AddScoped<ICarsRepository, CarsRepository>();
+builder.Services.AddScoped<IPersonalRepository, PersonalRepository>();
+builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
@@ -35,7 +43,7 @@ builder.Services.AddAutoMapper(typeof(MapProfile));
 //Db created
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
-    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerDbContext"), option =>
+    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon"), option =>
     {
         option.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
     });

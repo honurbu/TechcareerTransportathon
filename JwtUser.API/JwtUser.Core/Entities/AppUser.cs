@@ -17,5 +17,8 @@ namespace JwtUser.Core.Entities
         [JsonIgnore]
         public ICollection<Transport> Transports { get; set; }
 
+        [JsonIgnore]
+        public ICollection<Application> Applications { get; set; }
+
     }
 }

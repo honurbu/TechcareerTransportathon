@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj": {}
+    "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj": {
+    "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj",
         "projectName": "JwtUser.Core",
-        "projectPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj",
+        "projectPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Core\\JwtUser.Core.csproj",
         "packagesPath": "C:\\Users\\Onur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\JwtUser.API\\JwtUser.Core\\obj\\",
+        "outputPath": "C:\\Users\\Onur\\Desktop\\Transportathon\\Transportathon\\JwtUser.API\\JwtUser.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Onur\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -51,6 +51,10 @@
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
               "version": "[7.0.10, )"
             },

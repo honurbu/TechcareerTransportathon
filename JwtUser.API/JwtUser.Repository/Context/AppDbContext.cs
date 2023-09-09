@@ -25,6 +25,10 @@ namespace JwtUser.Repository.Context
         public DbSet<Transport> Transports { get; set; }
         public DbSet<PackageHelper> PackageHelpers { get; set; }
         public DbSet<Insurance> Insurances { get; set; }
+        public DbSet<Cars> Cars { get; set; }
+        public DbSet<Appellation> Appellations { get; set; }
+        public DbSet<Application> Applications { get; set; }
+        public DbSet<Personal> Personals { get; set; }
     }
 
 }

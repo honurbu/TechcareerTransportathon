@@ -16,7 +16,7 @@ namespace JwtUser.API.Controllers
         private readonly ITransportService _transportService;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
+        
 
         public TransportController(ITransportService transportService, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {

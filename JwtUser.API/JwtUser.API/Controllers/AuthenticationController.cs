@@ -3,6 +3,8 @@ using JwtUser.Core.DTOs;
 using JwtUser.Core.DTOs.Request;
 using JwtUser.Core.DTOs.Response;
 using JwtUser.Core.Entities;
+using JwtUser.Core.Services;
+using JwtUser.Core.UnitOfWorks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,8 +23,6 @@ namespace JwtUser.API.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
-
-
         public AuthenticationController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         {
             _userManager = userManager;
@@ -99,7 +99,6 @@ namespace JwtUser.API.Controllers
                 Message = "User created successfully!" 
             });
         }
-
 
 
         [HttpPost]
