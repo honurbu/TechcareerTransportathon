@@ -9,5 +9,8 @@ namespace JwtUser.Core.Services
 {
     public interface ITransportService : IGenericService<Transport>
     {
+
+        Task<List<Transport>> GetTransportswithRelations();
+
     }
 }

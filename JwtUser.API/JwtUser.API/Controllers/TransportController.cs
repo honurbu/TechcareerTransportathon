@@ -1,7 +1,11 @@
-﻿using JwtUser.Core.Entities;
+﻿using AutoMapper;
+using JwtUser.Core.DTOs.Request;
+using JwtUser.Core.Entities;
 using JwtUser.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace JwtUser.API.Controllers
 {
@@ -10,10 +14,15 @@ namespace JwtUser.API.Controllers
     public class TransportController : ControllerBase
     {
         private readonly ITransportService _transportService;
+        private readonly IMapper _mapper;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public TransportController(ITransportService transportService)
+
+        public TransportController(ITransportService transportService, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _transportService = transportService;
+            _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
 
@@ -22,6 +31,28 @@ namespace JwtUser.API.Controllers
         {
             var values =  _transportService.GetAllAsync();            
             return Ok(values);            
+        }
+
+        [HttpGet]
+        [Route("GetListTransportsTest")]
+        public async Task<IActionResult> GetListTransportsTest()
+        {
+            var values = await _transportService.GetTransportswithRelations();
+            return Ok(values);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddTransport(AddTransportDto transportDto)
+        {
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            var transport = _mapper.Map<Transport>(transportDto);
+
+            transport.AppUserId = userId;
+
+            await _transportService.AddAsync(transport);
+            return Ok("Data success add");
         }
     }
 }

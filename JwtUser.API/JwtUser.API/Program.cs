@@ -4,6 +4,7 @@ using JwtUser.Core.UnitOfWorks;
 using JwtUser.Repository.Context;
 using JwtUser.Repository.Repositories;
 using JwtUser.Repository.UnitOfWorks;
+using JwtUser.Service.Mapping;
 using JwtUser.Service.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -28,6 +29,7 @@ builder.Services.AddScoped<ITransportService, TransportService>();
 builder.Services.AddScoped(typeof(ITransportRepository), typeof(TransportRepository));
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddAutoMapper(typeof(MapProfile));
 
 
 //Db created
@@ -68,7 +70,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

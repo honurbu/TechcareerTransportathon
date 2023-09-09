@@ -158,6 +158,10 @@ namespace JwtUser.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -178,6 +182,10 @@ namespace JwtUser.Repository.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("HowCarryId");
 
@@ -433,6 +441,18 @@ namespace JwtUser.Repository.Migrations
 
             modelBuilder.Entity("JwtUser.Core.Entities.Transport", b =>
                 {
+                    b.HasOne("JwtUser.Core.Entities.AppUser", "AppUser")
+                        .WithMany("Transports")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JwtUser.Core.Entities.Category", "Category")
+                        .WithMany("Transports")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("JwtUser.Core.Entities.HowCarry", "HowCarries")
                         .WithMany("Transports")
                         .HasForeignKey("HowCarryId")
@@ -456,6 +476,10 @@ namespace JwtUser.Repository.Migrations
                         .HasForeignKey("StreetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Category");
 
                     b.Navigation("HowCarries");
 
@@ -517,6 +541,11 @@ namespace JwtUser.Repository.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("JwtUser.Core.Entities.Category", b =>
+                {
+                    b.Navigation("Transports");
+                });
+
             modelBuilder.Entity("JwtUser.Core.Entities.City", b =>
                 {
                     b.Navigation("Towns");
@@ -540,6 +569,11 @@ namespace JwtUser.Repository.Migrations
             modelBuilder.Entity("JwtUser.Core.Entities.Town", b =>
                 {
                     b.Navigation("Streets");
+                });
+
+            modelBuilder.Entity("JwtUser.Core.Entities.AppUser", b =>
+                {
+                    b.Navigation("Transports");
                 });
 #pragma warning restore 612, 618
         }

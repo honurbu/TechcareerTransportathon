@@ -11,6 +11,7 @@ namespace JwtUser.Core.Entities
         public string Name { get; set; }
 
 
+        [System.Text.Json.Serialization.JsonIgnore]
         public ICollection<Transport> Transports { get; set; }
     }
 }
