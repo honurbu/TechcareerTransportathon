@@ -1,0 +1,20 @@
+﻿using JwtUser.Core.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace JwtUser.Core.DTOs.Request
+{
+    public class AddApplicationDto
+    {
+        public string? CompanyId { get; set; }
+
+        public decimal Price { get; set; }
+        public DateTime TransportTime { get; set; }
+
+
+        public int TransportId { get; set; }
+    }
+}

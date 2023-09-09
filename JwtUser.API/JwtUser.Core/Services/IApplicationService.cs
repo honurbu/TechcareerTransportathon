@@ -9,7 +9,7 @@ namespace JwtUser.Core.Services
 {
     public interface IApplicationService : IGenericService<Application>
     {
-        Task<List<Application>> GetApplicationswithRelations();
+        Task<List<Application>> GetApplicationswithRelations(int id);
 
     }
 }

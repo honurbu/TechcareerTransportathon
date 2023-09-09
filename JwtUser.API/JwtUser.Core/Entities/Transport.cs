@@ -12,7 +12,7 @@ namespace JwtUser.Core.Entities
 
         //[JsonIgnore]
         public int CategoryId { get; set; }
-        [JsonIgnore]
+       // [JsonIgnore]
         public Category Category { get; set; }
 
 
@@ -26,7 +26,7 @@ namespace JwtUser.Core.Entities
         //[JsonIgnore]
         public int StreetId { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public Street Street { get; set; }
 
 

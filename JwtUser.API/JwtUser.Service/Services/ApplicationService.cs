@@ -19,9 +19,9 @@ namespace JwtUser.Service.Services
             _applicationRepository = applicationRepository;
         }
 
-        public async Task<List<Application>> GetApplicationswithRelations()
+        public async Task<List<Application>> GetApplicationswithRelations(int id)
         {
-            return await _applicationRepository.GetApplicationswithRelations();
+            return await _applicationRepository.GetApplicationswithRelations(id);
         }
     }
 }

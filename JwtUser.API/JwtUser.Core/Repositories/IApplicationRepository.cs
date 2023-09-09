@@ -9,7 +9,7 @@ namespace JwtUser.Core.Repositories
 {
     public interface IApplicationRepository : IGenericRepository<Application>
     {
-        Task<List<Application>> GetApplicationswithRelations();
+        Task<List<Application>> GetApplicationswithRelations(int id);
 
     }
 }
