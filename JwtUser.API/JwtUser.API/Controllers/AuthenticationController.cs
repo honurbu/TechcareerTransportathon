@@ -82,7 +82,8 @@ namespace JwtUser.API.Controllers
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.UserName,
                 Name = model.Name,
-                Surname = model.Surname,                
+                Surname = model.Surname,   
+                IsCompany = false
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -96,6 +97,44 @@ namespace JwtUser.API.Controllers
             return Ok(new ResponseDto 
             { Status = "Success",
                 Message = "User created successfully!" 
+            });
+        }
+
+
+
+        [HttpPost]
+        [Route("registerforcompany")]
+        public async Task<IActionResult> RegisterforCompany([FromBody] RegisterForCompanyDto model)
+        {
+            var userExists = await _userManager.FindByNameAsync(model.UserName);
+            if (userExists != null)
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDto
+                {
+                    Status = "Error",
+                    Message = "User Alreadys Exists !"
+                });
+
+            AppUser company = new()
+            {
+                Email = model.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = model.UserName,               
+                IsCompany = true
+            };
+
+            var result = await _userManager.CreateAsync(company, model.Password);
+            if (!result.Succeeded)
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDto
+                {
+                    Status = "Error",
+                    Message = "User creation failed! Please check user details and try again."
+                });
+
+            return Ok(new ResponseDto
+            {
+                Status = "Success",
+                Message = "User created successfully!"
             });
         }
 

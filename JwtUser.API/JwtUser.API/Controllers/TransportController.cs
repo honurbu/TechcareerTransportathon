@@ -54,5 +54,29 @@ namespace JwtUser.API.Controllers
             await _transportService.AddAsync(transport);
             return Ok("Data success add");
         }
+
+
+        [Authorize]
+        [HttpGet]
+        [Route("GetList")]
+        public async Task<IActionResult> GetMyTransportList()
+        {
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            var values = await _transportService.GetUserTransportList(userId);
+            return Ok(values);
+
+        }
+
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> RemoveTransport(int id)
+        {
+            var values = await _transportService.GetByIdAsync(id);
+            _transportService.Remove(values);
+            return Ok("Successfully Removed !");
+        }
+
     }
 }

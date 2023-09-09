@@ -11,6 +11,7 @@ namespace JwtUser.Core.Services
     {
 
         Task<List<Transport>> GetTransportswithRelations();
+        Task<List<Transport>> GetUserTransportList(string id);
 
     }
 }

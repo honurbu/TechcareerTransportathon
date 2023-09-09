@@ -22,6 +22,7 @@ namespace JwtUser.Core.Entities
 
         //[JsonIgnore]
         public int StreetId { get; set; }
+
         [JsonIgnore]
         public Street Street { get; set; }
 
@@ -29,12 +30,14 @@ namespace JwtUser.Core.Entities
 
         //[JsonIgnore]
         public int HowCarryId { get; set; }
+
         [JsonIgnore]
          public HowCarry HowCarries { get; set; }
 
 
        //[JsonIgnore]
         public int PackageHelperId { get; set; }
+
         [JsonIgnore]
         public PackageHelper PackageHelpers { get; set; }
 
@@ -48,6 +51,7 @@ namespace JwtUser.Core.Entities
 
         //[JsonIgnore]
         public string AppUserId { get; set; }
+
         [JsonIgnore]
         public AppUser AppUser { get; set; }
 

@@ -23,5 +23,10 @@ namespace JwtUser.Service.Services
         {
             return await _transportRepository.GetTransportswithRelations();
         }
-    }
+
+        public async Task<List<Transport>> GetUserTransportList(string id)
+        {
+            return await _transportRepository.GetUserTransportList(id);
+        }
+    }    
 }
