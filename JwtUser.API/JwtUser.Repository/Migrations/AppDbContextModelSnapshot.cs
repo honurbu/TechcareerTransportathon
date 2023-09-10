@@ -299,6 +299,9 @@ namespace JwtUser.Repository.Migrations
                     b.Property<int>("StreetId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ToStreetId")
+                        .HasColumnType("int");
+
                     b.Property<int>("itemCount")
                         .HasColumnType("int");
 
@@ -318,6 +321,8 @@ namespace JwtUser.Repository.Migrations
                     b.HasIndex("PackageHelperId");
 
                     b.HasIndex("StreetId");
+
+                    b.HasIndex("ToStreetId");
 
                     b.ToTable("Transports");
                 });
@@ -532,6 +537,9 @@ namespace JwtUser.Repository.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsCompany")
                         .HasColumnType("bit");
 
@@ -655,6 +663,10 @@ namespace JwtUser.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("JwtUser.Core.Entities.Street", "ToStreet")
+                        .WithMany()
+                        .HasForeignKey("ToStreetId");
+
                     b.Navigation("AppUser");
 
                     b.Navigation("Category");
@@ -666,6 +678,8 @@ namespace JwtUser.Repository.Migrations
                     b.Navigation("PackageHelpers");
 
                     b.Navigation("Street");
+
+                    b.Navigation("ToStreet");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
