@@ -34,21 +34,21 @@ namespace JwtUser.Core.Entities
         //[JsonIgnore]
         public int HowCarryId { get; set; }
 
-        [JsonIgnore]
+       // [JsonIgnore]
          public HowCarry HowCarries { get; set; }
 
 
        //[JsonIgnore]
         public int PackageHelperId { get; set; }
 
-        [JsonIgnore]
+       // [JsonIgnore]
         public PackageHelper PackageHelpers { get; set; }
 
 
         //[JsonIgnore]
         public int InsuranceId { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public Insurance Insurances { get; set; }
 
 

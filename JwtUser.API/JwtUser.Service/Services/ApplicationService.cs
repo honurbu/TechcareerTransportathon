@@ -1,4 +1,5 @@
-﻿using JwtUser.Core.Entities;
+﻿using JwtUser.Core.DTOs.Response;
+using JwtUser.Core.Entities;
 using JwtUser.Core.Repositories;
 using JwtUser.Core.Services;
 using JwtUser.Core.UnitOfWorks;
@@ -19,14 +20,26 @@ namespace JwtUser.Service.Services
             _applicationRepository = applicationRepository;
         }
 
+        public decimal AverageRate(string id)
+        {
+            return _applicationRepository.AverageRate(id);
+        }
+
         public async Task<List<Application>> GetApplicationswithRelations(int id)
         {
             return await _applicationRepository.GetApplicationswithRelations(id);
         }
 
+       
+
         public int GetTransportApplicationCount(int id)
         {
             return _applicationRepository.GetTransportApplicationCount(id);
+        }
+
+        public decimal Updaterating(int id, int rate)
+        {
+                return _applicationRepository.Updaterating(id, rate);
         }
     }
 }

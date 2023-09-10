@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using JwtUser.Core.DTOs.Request;
+using JwtUser.Core.DTOs.Response;
 using JwtUser.Core.Entities;
 using JwtUser.Core.Services;
 using JwtUser.Service.Services;
@@ -38,6 +39,7 @@ namespace JwtUser.API.Controllers
             return Ok(await _applicationService.GetApplicationswithRelations(id));
         }
 
+       
 
         [Authorize]
         [HttpPost]
@@ -49,11 +51,31 @@ namespace JwtUser.API.Controllers
 
             application.CompanyId = userId;
             application.IsSuccess = false;
+            application.Rate = null;
             application.TransportTime = DateTime.Now.AddDays(application.CompanyTransportTime);
             
             await _applicationService.AddAsync(application);
 
             return Ok("Data success add");
+        }
+
+       
+        //[Authorize]
+        [HttpPost]
+        [Route("UpdateTest")]
+        public  IActionResult UpdatApplication(int id, int rate)
+        {
+
+            var values =  _applicationService.Updaterating(id,rate);
+
+            return Ok("Data success add");
+        }
+
+        [HttpGet]
+        [Route("GetCompanyAverage")]
+        public IActionResult GetCompanyAverage(string id)
+        {
+            return Ok(_applicationService.AverageRate(id));
         }
 
         [HttpGet]

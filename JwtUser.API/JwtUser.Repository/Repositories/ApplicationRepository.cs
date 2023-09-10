@@ -1,4 +1,5 @@
-﻿using JwtUser.Core.Entities;
+﻿using JwtUser.Core.DTOs.Response;
+using JwtUser.Core.Entities;
 using JwtUser.Core.Repositories;
 using JwtUser.Repository.Context;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,11 @@ namespace JwtUser.Repository.Repositories
         {
         }
 
+        public decimal AverageRate(string id)
+        {
+            var count = _dbContext.Applications.Where(x => x.IsSuccess == true && x.Rate != null && x.CompanyId == id).Count();
+            return (decimal)_dbContext.Applications.Where(x => x.IsSuccess == true && x.Rate != null && x.CompanyId==id).Sum(x => x.Rate)/count;
+        }
 
         public async Task<List<Application>> GetApplicationswithRelations(int id)
         {
@@ -36,9 +42,20 @@ namespace JwtUser.Repository.Repositories
                 .ToListAsync();
         }
 
+
         public int GetTransportApplicationCount(int id)
         {
             return _dbContext.Applications.Where(x => x.TransportId == id).Count();
+        }
+
+        public decimal Updaterating(int id, int rate)
+        {
+            var application = _dbContext.Applications.FirstOrDefault(x => x.Id == id);
+            
+                application.Rate = rate; // Price alanını rate ile güncelle
+                _dbContext.SaveChanges(); // Değişiklikleri kaydet
+                return (decimal)application.Rate; // Güncellenen Price değerini geri dön
+            
         }
     }
 }

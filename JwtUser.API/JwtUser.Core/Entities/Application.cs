@@ -29,5 +29,7 @@ namespace JwtUser.Core.Entities
 
         public bool? IsSuccess { get; set; }
 
+
+        public float? Rate { get; set; }
     }
 }
