@@ -23,5 +23,10 @@ namespace JwtUser.Service.Services
         {
             return await _applicationRepository.GetApplicationswithRelations(id);
         }
+
+        public int GetTransportApplicationCount(int id)
+        {
+            return _applicationRepository.GetTransportApplicationCount(id);
+        }
     }
 }

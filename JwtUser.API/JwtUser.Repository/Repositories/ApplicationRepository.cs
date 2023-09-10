@@ -16,6 +16,7 @@ namespace JwtUser.Repository.Repositories
         {
         }
 
+
         public async Task<List<Application>> GetApplicationswithRelations(int id)
         {
             return await _dbContext.Applications
@@ -31,7 +32,13 @@ namespace JwtUser.Repository.Repositories
                 .Include(x=>x.Transports)
                     .ThenInclude(x=>x.HowCarries)
                 .Include(x=>x.Company)
+                .Include(x=>x.Cars)
                 .ToListAsync();
+        }
+
+        public int GetTransportApplicationCount(int id)
+        {
+            return _dbContext.Applications.Where(x => x.TransportId == id).Count();
         }
     }
 }

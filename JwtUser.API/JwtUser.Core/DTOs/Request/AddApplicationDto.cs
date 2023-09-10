@@ -16,5 +16,10 @@ namespace JwtUser.Core.DTOs.Request
 
 
         public int TransportId { get; set; }
+        public int CarsId { get; set; }
+        public int CompanyTransportTime { get; set; }
+
+        public bool IsSuccess { get; set; }
+
     }
 }

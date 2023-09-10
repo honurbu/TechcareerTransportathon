@@ -12,14 +12,22 @@ namespace JwtUser.Core.Entities
         public AppUser? Company { get; set; }
 
         public decimal Price { get; set; }
+
+        public int CompanyTransportTime { get; set; }
         public DateTime TransportTime { get; set; }
 
 
 
         public int TransportId { get; set; }
         public Transport? Transports { get; set; }
-        
-        
-       
+
+
+
+        public int CarsId { get; set; }
+        public Cars? Cars { get; set; }
+
+
+        public bool? IsSuccess { get; set; }
+
     }
 }

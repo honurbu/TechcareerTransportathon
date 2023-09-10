@@ -4,22 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JwtUser.Core.Entities
+namespace JwtUser.Core.DTOs.Request
 {
-    public class Personal : BaseEntity
+    public class AddPersonelDto
     {
         public string? Name { get; set; }
         public string? Surname { get; set; }
-      
         public int AppellationId { get; set; }
-        public Appellation? Appellation { get; set; }
-
-
-
         public string? CompanyId { get; set; }
-        public AppUser? Company { get; set; }
-
-
 
     }
 }

@@ -2,8 +2,10 @@
 using JwtUser.Core.DTOs.Response;
 using JwtUser.Core.Entities;
 using JwtUser.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace JwtUser.API.Controllers
 {
@@ -12,11 +14,13 @@ namespace JwtUser.API.Controllers
     public class CarsController : ControllerBase
     {
         private readonly ICarsService _carsService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IMapper _mapper;
-        public CarsController(ICarsService carsService, IMapper mapper)
+        public CarsController(ICarsService carsService, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _carsService = carsService;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         [HttpGet]
@@ -25,14 +29,21 @@ namespace JwtUser.API.Controllers
             return Ok(_carsService.GetAllAsync());
         }
 
+
+        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> CreateCars(CarsDto carsDto)
+        public async Task<IActionResult> CreateCars([FromBody]CarsDto carsDto)
         {
+
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
             var cars = _mapper.Map<Cars>(carsDto);
+
+            cars.CompanyId = userId;
 
             await _carsService.AddAsync(cars);
 
-            return Ok();
+            return Ok("Data successfull Add");
         }
 
         [HttpDelete]

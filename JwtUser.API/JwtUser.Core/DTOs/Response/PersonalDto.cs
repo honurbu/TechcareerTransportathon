@@ -12,8 +12,6 @@ namespace JwtUser.Core.DTOs.Response
         public int Id { get; set; }
         public string? Name { get; set; }
         public string? Surname { get; set; }
-        public string? DrivingLicence { get; set; }
-        public int? Age { get; set; }
         public int AppellationId { get; set; }
     }
 }

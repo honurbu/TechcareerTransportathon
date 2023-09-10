@@ -11,5 +11,8 @@ namespace JwtUser.Core.Repositories
     {
         Task<List<Application>> GetApplicationswithRelations(int id);
 
+
+        public int GetTransportApplicationCount(int id);
+
     }
 }

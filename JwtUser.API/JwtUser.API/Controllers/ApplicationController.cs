@@ -45,12 +45,22 @@ namespace JwtUser.API.Controllers
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            var transport = _mapper.Map<Application>(addApplicationDto);
+            var application = _mapper.Map<Application>(addApplicationDto);
 
-            transport.CompanyId = userId;
+            application.CompanyId = userId;
+            application.IsSuccess = false;
+            application.TransportTime = DateTime.Now.AddDays(application.CompanyTransportTime);
+            
+            await _applicationService.AddAsync(application);
 
-            await _applicationService.AddAsync(transport);
             return Ok("Data success add");
+        }
+
+        [HttpGet]
+        [Route("TransportCount")]
+        public IActionResult GetTransportApplicationCount(int id)
+        {
+            return Ok(_applicationService.GetTransportApplicationCount(id));
         }
     }
 }

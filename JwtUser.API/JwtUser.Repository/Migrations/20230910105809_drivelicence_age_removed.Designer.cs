@@ -4,6 +4,7 @@ using JwtUser.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JwtUser.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230910105809_drivelicence_age_removed")]
+    partial class drivelicence_age_removed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,9 +95,6 @@ namespace JwtUser.Repository.Migrations
                     b.Property<int?>("Capacity")
                         .HasColumnType("int");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
@@ -102,8 +102,6 @@ namespace JwtUser.Repository.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
 
                     b.ToTable("Cars");
                 });
@@ -203,9 +201,6 @@ namespace JwtUser.Repository.Migrations
                     b.Property<int>("AppellationId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -215,8 +210,6 @@ namespace JwtUser.Repository.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AppellationId");
-
-                    b.HasIndex("CompanyId");
 
                     b.ToTable("Personals");
                 });
@@ -566,15 +559,6 @@ namespace JwtUser.Repository.Migrations
                     b.Navigation("Transports");
                 });
 
-            modelBuilder.Entity("JwtUser.Core.Entities.Cars", b =>
-                {
-                    b.HasOne("JwtUser.Core.Entities.AppUser", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
-
-                    b.Navigation("Company");
-                });
-
             modelBuilder.Entity("JwtUser.Core.Entities.Personal", b =>
                 {
                     b.HasOne("JwtUser.Core.Entities.Appellation", "Appellation")
@@ -583,13 +567,7 @@ namespace JwtUser.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JwtUser.Core.Entities.AppUser", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
-
                     b.Navigation("Appellation");
-
-                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("JwtUser.Core.Entities.Street", b =>
