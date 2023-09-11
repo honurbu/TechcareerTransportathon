@@ -23,8 +23,6 @@ namespace JwtUser.Repository.Context
         public DbSet<Category> Categories { get; set; }
         public DbSet<HowCarry> HowCarries { get; set; }
         public DbSet<Transport> Transports { get; set; }
-        public DbSet<PackageHelper> PackageHelpers { get; set; }
-        public DbSet<Insurance> Insurances { get; set; }
         public DbSet<Cars> Cars { get; set; }
         public DbSet<Appellation> Appellations { get; set; }
         public DbSet<Application> Applications { get; set; }

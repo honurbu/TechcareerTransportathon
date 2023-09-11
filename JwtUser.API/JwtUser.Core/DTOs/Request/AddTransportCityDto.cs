@@ -25,9 +25,12 @@ namespace JwtUser.Core.DTOs.Request
 
 
 
-        public int PackageHelperId { get; set; }
 
-        public int InsuranceId { get; set; }
+        public bool isPackageHelpers { get; set; }
+
+
+        public bool isInsurances { get; set; }
+
 
 
         public string AppUserId { get; set; }

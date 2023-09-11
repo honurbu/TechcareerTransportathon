@@ -185,39 +185,6 @@ namespace JwtUser.Repository.Migrations
                     b.ToTable("HowCarries");
                 });
 
-            modelBuilder.Entity("JwtUser.Core.Entities.Insurance", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("isWant")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Insurances");
-                });
-
-            modelBuilder.Entity("JwtUser.Core.Entities.PackageHelper", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PackageHelpers");
-                });
-
             modelBuilder.Entity("JwtUser.Core.Entities.Personal", b =>
                 {
                     b.Property<int>("Id")
@@ -313,12 +280,6 @@ namespace JwtUser.Repository.Migrations
                     b.Property<int>("HowCarryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("InsuranceId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PackageHelperId")
-                        .HasColumnType("int");
-
                     b.Property<int>("StreetId")
                         .HasColumnType("int");
 
@@ -327,6 +288,12 @@ namespace JwtUser.Repository.Migrations
 
                     b.Property<int>("bigitemCount")
                         .HasColumnType("int");
+
+                    b.Property<bool>("isInsurances")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isPackageHelpers")
+                        .HasColumnType("bit");
 
                     b.Property<int>("miditemCount")
                         .HasColumnType("int");
@@ -341,10 +308,6 @@ namespace JwtUser.Repository.Migrations
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("HowCarryId");
-
-                    b.HasIndex("InsuranceId");
-
-                    b.HasIndex("PackageHelperId");
 
                     b.HasIndex("StreetId");
 
@@ -688,18 +651,6 @@ namespace JwtUser.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JwtUser.Core.Entities.Insurance", "Insurances")
-                        .WithMany("Transports")
-                        .HasForeignKey("InsuranceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("JwtUser.Core.Entities.PackageHelper", "PackageHelpers")
-                        .WithMany("Transports")
-                        .HasForeignKey("PackageHelperId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("JwtUser.Core.Entities.Street", "Street")
                         .WithMany()
                         .HasForeignKey("StreetId")
@@ -715,10 +666,6 @@ namespace JwtUser.Repository.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("HowCarries");
-
-                    b.Navigation("Insurances");
-
-                    b.Navigation("PackageHelpers");
 
                     b.Navigation("Street");
 
@@ -797,16 +744,6 @@ namespace JwtUser.Repository.Migrations
                 });
 
             modelBuilder.Entity("JwtUser.Core.Entities.HowCarry", b =>
-                {
-                    b.Navigation("Transports");
-                });
-
-            modelBuilder.Entity("JwtUser.Core.Entities.Insurance", b =>
-                {
-                    b.Navigation("Transports");
-                });
-
-            modelBuilder.Entity("JwtUser.Core.Entities.PackageHelper", b =>
                 {
                     b.Navigation("Transports");
                 });

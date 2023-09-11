@@ -25,16 +25,7 @@ namespace JwtUser.Repository.Repositories
 
         public async Task<List<Application>> GetApplicationswithRelations(int id)
         {
-            return await _dbContext.Applications
-                .Where(x => x.TransportId == id)
-                .Include(x => x.Transports)
-                    .ThenInclude(x => x.Category)
-                .Include(x => x.Transports)
-                    .ThenInclude(x => x.Insurances)
-                .Include(x => x.Transports)
-                    .ThenInclude(x => x.PackageHelpers)
-                .Include(x => x.Transports)
-                    .ThenInclude(x => x.Street)
+            return await _dbContext.Applications.Where(x => x.TransportId == id).Include(x => x.Transports).ThenInclude(x => x.Category)
                  .Include(x => x.Transports)
                     .ThenInclude(x => x.ToStreet)
                 .Include(x => x.Transports)

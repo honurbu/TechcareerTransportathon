@@ -40,18 +40,10 @@ namespace JwtUser.Core.Entities
          public HowCarry HowCarries { get; set; }
 
 
-       //[JsonIgnore]
-        public int PackageHelperId { get; set; }
-
-       // [JsonIgnore]
-        public PackageHelper PackageHelpers { get; set; }
+        public bool isPackageHelpers { get; set; }
 
 
-        //[JsonIgnore]
-        public int InsuranceId { get; set; }
-
-        //[JsonIgnore]
-        public Insurance Insurances { get; set; }
+        public bool isInsurances { get; set; }
 
 
         //[JsonIgnore]
