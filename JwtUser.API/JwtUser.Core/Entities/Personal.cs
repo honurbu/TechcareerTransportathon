@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace JwtUser.Core.Entities
@@ -18,5 +19,10 @@ namespace JwtUser.Core.Entities
 
         public string? CompanyId { get; set; }
         public AppUser? Company { get; set; }
+
+
+        [JsonIgnore]
+        public ICollection<AppPersonel> AppPersonels { get; set; }
+
     }
 }

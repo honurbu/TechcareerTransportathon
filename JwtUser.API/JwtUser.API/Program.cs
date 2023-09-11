@@ -43,7 +43,7 @@ builder.Services.AddAutoMapper(typeof(MapProfile));
 //Db created
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
-    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon"), option =>
+x.LogTo(Console.WriteLine,Microsoft.Extensions.Logging.LogLevel.Information).UseSqlServer(builder.Configuration.GetConnectionString("SqlCon"), option =>
     {
         option.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
     });

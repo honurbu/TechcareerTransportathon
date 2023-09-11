@@ -24,7 +24,8 @@ namespace JwtUser.Repository.Repositories
                 .Include(x => x.PackageHelpers)
                 .Include(x => x.AppUser)
                 .Include(x => x.Category)
-                .Include(x => x.Street).ThenInclude(x => x.Towns).ThenInclude(x => x.City).ToListAsync();
+                .Include(x => x.ToStreet)
+                .Include(x => x.Street).ToListAsync();
         }
 
         public async Task<List<Transport>> GetUserTransportList(string id)
@@ -35,8 +36,9 @@ namespace JwtUser.Repository.Repositories
                 .Include(x => x.HowCarries)
                 .Include(x => x.PackageHelpers)
                 .Include(x => x.Category)
-                .Include(x=>x.AppUser)
-                .Include(x => x.Street).ThenInclude(x => x.Towns).ThenInclude(x => x.City).ToListAsync();
+                .Include(x => x.AppUser)
+                .Include(x => x.ToStreet)
+                .Include(x => x.Street).ToListAsync();
         }
     }
 }
