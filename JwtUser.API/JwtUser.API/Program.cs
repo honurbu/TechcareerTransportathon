@@ -28,6 +28,9 @@ builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 builder.Services.AddScoped<ITransportService, TransportService>();
 builder.Services.AddScoped(typeof(ITransportRepository), typeof(TransportRepository));
 
+builder.Services.AddScoped<IAppPersonelService, AppPersonelService>();
+builder.Services.AddScoped(typeof(IAppPersonelRepository), typeof(AppPersonelRepository));
+
 builder.Services.AddScoped<ICarsService, CarsService>();
 builder.Services.AddScoped<IPersonalService, PersonalService>();
 builder.Services.AddScoped<IApplicationService, ApplicationService>();

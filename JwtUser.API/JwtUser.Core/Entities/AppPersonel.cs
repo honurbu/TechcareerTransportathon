@@ -12,6 +12,5 @@ namespace JwtUser.Core.Entities
         public Personal Personals { get; set; }
 
         public int ApplicationId { get; set; }
-        public Application Applications { get; set; }
     }
 }

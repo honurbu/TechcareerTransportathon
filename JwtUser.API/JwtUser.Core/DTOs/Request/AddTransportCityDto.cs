@@ -11,9 +11,11 @@ namespace JwtUser.Core.DTOs.Request
         public int CategoryId { get; set; }
 
         public string Directions { get; set; }      //adres tarifi
+        public int bigitemCount { get; set; }
+        public int miditemCount { get; set; }
+        public int smallitemCount { get; set; }
 
-        public int itemCount { get; set; }
-        public int packageCount { get; set; }
+
 
 
         public int StreetId { get; set; }
@@ -30,6 +32,6 @@ namespace JwtUser.Core.DTOs.Request
 
         public string AppUserId { get; set; }
 
-        public int ToStreetId { get; set; }
+        public int? ToStreetId { get; set; }
     }
 }

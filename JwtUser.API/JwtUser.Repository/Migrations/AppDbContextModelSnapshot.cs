@@ -193,8 +193,8 @@ namespace JwtUser.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<bool>("isWant")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -325,10 +325,13 @@ namespace JwtUser.Repository.Migrations
                     b.Property<int?>("ToStreetId")
                         .HasColumnType("int");
 
-                    b.Property<int>("itemCount")
+                    b.Property<int>("bigitemCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("packageCount")
+                    b.Property<int>("miditemCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("smallitemCount")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -577,7 +580,7 @@ namespace JwtUser.Repository.Migrations
 
             modelBuilder.Entity("JwtUser.Core.Entities.AppPersonel", b =>
                 {
-                    b.HasOne("JwtUser.Core.Entities.Application", "Applications")
+                    b.HasOne("JwtUser.Core.Entities.Application", null)
                         .WithMany("AppPersonels")
                         .HasForeignKey("ApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -588,8 +591,6 @@ namespace JwtUser.Repository.Migrations
                         .HasForeignKey("PersonalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Applications");
 
                     b.Navigation("Personals");
                 });

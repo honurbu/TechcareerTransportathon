@@ -42,19 +42,19 @@ namespace JwtUser.API.Controllers
             return Ok(values);
         }
 
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> AddTransport(AddTransportDto transportDto)
-        {
-            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        //[Authorize]
+        //[HttpPost]
+        //public async Task<IActionResult> AddTransport(AddTransportDto transportDto)
+        //{
+        //    var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            var transport = _mapper.Map<Transport>(transportDto);
+        //    var transport = _mapper.Map<Transport>(transportDto);
 
-            transport.AppUserId = userId;
+        //    transport.AppUserId = userId;
 
-            await _transportService.AddAsync(transport);
-            return Ok("Data success add");
-        }
+        //    await _transportService.AddAsync(transport);
+        //    return Ok("Data success add");
+        //}
 
         [Authorize]
         [HttpPost("TransportCity")]
