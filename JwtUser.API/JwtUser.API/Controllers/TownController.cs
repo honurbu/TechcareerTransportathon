@@ -16,13 +16,13 @@ namespace JwtUser.API.Controllers
         }
 
         [HttpGet]
+        [Route("GetAllTowns")]
         public IActionResult GetTown() 
         {
             return Ok(_townService.GetAllAsync());
         }
 
         [HttpGet]
-        [Route("GetTownByCity")]
         public async Task<IActionResult> GetTownByCity(int id)
         {
             return Ok(await _townService.GetTownByCity(id)); 

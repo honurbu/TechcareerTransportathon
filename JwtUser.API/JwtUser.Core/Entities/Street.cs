@@ -11,6 +11,7 @@ namespace JwtUser.Core.Entities
     {
         public string Name { get; set; }
         public int TownId { get; set; }
+        //[JsonIgnore]
         public Town Towns { get; set; }
 
 

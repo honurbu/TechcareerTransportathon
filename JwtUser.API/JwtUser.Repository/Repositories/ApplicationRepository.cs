@@ -27,7 +27,8 @@ namespace JwtUser.Repository.Repositories
         {
             return await _dbContext.Applications.Where(x => x.TransportId == id).Include(x => x.Transports).ThenInclude(x => x.Category)
                  .Include(x => x.Transports)
-                    .ThenInclude(x => x.ToStreet)
+                    .ThenInclude(x => x.ToStreet).ThenInclude(x=>x.Towns).ThenInclude(x=>x.City)
+                     .Include(x => x.Transports).ThenInclude(x => x.Street).ThenInclude(x => x.Towns).ThenInclude(x => x.City)
                 .Include(x => x.Transports)
                     .ThenInclude(x => x.HowCarries)
                 .Include(x => x.Company)

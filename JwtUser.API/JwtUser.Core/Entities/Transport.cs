@@ -13,12 +13,12 @@ namespace JwtUser.Core.Entities
 
         //[JsonIgnore]
         public int CategoryId { get; set; }
-       // [JsonIgnore]
+        // [JsonIgnore]
         public Category Category { get; set; }
 
 
 
-        public string Directions { get; set; }      //adres tarifi
+        public string? Description { get; set; }      //adres tarifi
 
         public int bigitemCount { get; set; }
         public int miditemCount { get; set; }
@@ -27,7 +27,6 @@ namespace JwtUser.Core.Entities
 
         //[JsonIgnore]
         public int StreetId { get; set; }
-
         //[JsonIgnore]
         public Street Street { get; set; }
 
@@ -36,8 +35,8 @@ namespace JwtUser.Core.Entities
         //[JsonIgnore]
         public int HowCarryId { get; set; }
 
-       // [JsonIgnore]
-         public HowCarry HowCarries { get; set; }
+        // [JsonIgnore]
+        public HowCarry HowCarries { get; set; }
 
 
         public bool isPackageHelpers { get; set; }
@@ -48,12 +47,14 @@ namespace JwtUser.Core.Entities
 
         //[JsonIgnore]
         public string AppUserId { get; set; }
-        
-        [JsonIgnore]
+
+        //[JsonIgnore]
         public AppUser AppUser { get; set; }
-        
+
         public int? ToStreetId { get; set; }
         public Street? ToStreet { get; set; }
 
+
+        public bool isIntercity  {get; set;}
     }
 }

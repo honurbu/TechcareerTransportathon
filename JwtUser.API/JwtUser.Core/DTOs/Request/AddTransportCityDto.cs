@@ -10,7 +10,7 @@ namespace JwtUser.Core.DTOs.Request
     {
         public int CategoryId { get; set; }
 
-        public string Directions { get; set; }      //adres tarifi
+        public string? Description { get; set; }      //adres tarifi
         public int bigitemCount { get; set; }
         public int miditemCount { get; set; }
         public int smallitemCount { get; set; }
@@ -36,5 +36,8 @@ namespace JwtUser.Core.DTOs.Request
         public string AppUserId { get; set; }
 
         public int? ToStreetId { get; set; }
+
+        public bool isIntercity { get; set; }
+
     }
 }

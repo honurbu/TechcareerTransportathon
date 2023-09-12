@@ -273,8 +273,7 @@ namespace JwtUser.Repository.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Directions")
-                        .IsRequired()
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("HowCarryId")
@@ -290,6 +289,9 @@ namespace JwtUser.Repository.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("isInsurances")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isIntercity")
                         .HasColumnType("bit");
 
                     b.Property<bool>("isPackageHelpers")

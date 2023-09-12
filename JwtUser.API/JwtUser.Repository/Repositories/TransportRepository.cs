@@ -22,7 +22,8 @@ namespace JwtUser.Repository.Repositories
                 .Include(x => x.HowCarries)
                 .Include(x => x.AppUser)
                 .Include(x => x.Category)
-                .Include(x => x.ToStreet)
+                .Include(x => x.ToStreet).ThenInclude(x=>x.Towns).ThenInclude(x=>x.City)
+                .Include(x => x.Street).ThenInclude(x => x.Towns).ThenInclude(x => x.City)
                 .Include(x => x.Street).ToListAsync();
         }
 
@@ -33,7 +34,8 @@ namespace JwtUser.Repository.Repositories
                 .Include(x => x.HowCarries)                
                 .Include(x => x.Category)
                 .Include(x => x.AppUser)
-                .Include(x => x.ToStreet)
+                .Include(x => x.ToStreet).ThenInclude(x => x.Towns).ThenInclude(x => x.City)
+                .Include(x => x.Street).ThenInclude(x => x.Towns).ThenInclude(x => x.City)
                 .Include(x => x.Street).ToListAsync();
         }
     }
