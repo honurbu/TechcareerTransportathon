@@ -30,7 +30,7 @@ namespace JwtUser.Service.Services
             _applicationRepository.ConfirmTransport(id);
         }
 
-        public async Task<Dictionary<string, object>> GetApplicationsWithRATE(int id)
+        public async Task<List<Dictionary<string, object>>> GetApplicationsWithRATE(int id)
         {
             return await _applicationRepository.GetApplicationsWithRATE(id);
         }

@@ -24,29 +24,34 @@ namespace JwtUser.Repository.Repositories
             return rate;
         }
 
-        public async Task<Dictionary<string, object>> GetApplicationsWithRATE(int id)
+        public async Task<List<Dictionary<string, object>>> GetApplicationsWithRATE(int id)
         {
-            var values = await _dbContext.Applications
-                    .Where(x => x.TransportId == id)
-                    .Include(x => x.Company)
-                    .Include(x => x.Cars)
-                    .Include(x => x.AppPersonels)
-                        .ThenInclude(x => x.Personals)
-                            .ThenInclude(x => x.Appellation)
-                    .ToListAsync();
+            var applications = await _dbContext.Applications
+         .Where(x => x.TransportId == id)
+         .Include(x => x.Company)
+         .Include(x => x.Cars)
+         .Include(x => x.AppPersonels)
+             .ThenInclude(x => x.Personals)
+                 .ThenInclude(x => x.Appellation)
+         .ToListAsync();
 
-            string compId = _dbContext.Applications
-                .Where(x => x.TransportId == id)
-                .Select(x => x.CompanyId)
-                .FirstOrDefault();
+            var results = new List<Dictionary<string, object>>();
 
-            var result = new Dictionary<string, object>
+            foreach (var application in applications)
             {
-                 { "values", values },
-                 { "rate", CalculateRate(compId) } 
-            };
+                string compId = application.CompanyId;
+                decimal rate = CalculateRate(compId); // Burada rate hesaplanmalı (CalculateRate metodunun nasıl çalıştığını bilmiyorum)
 
-            return result;
+                var result = new Dictionary<string, object>
+                 {
+                        { "application", application },
+                        { "rate", rate }
+                };
+
+                results.Add(result);
+            }
+
+            return results;
         }
 
         private decimal CalculateRate(string companyId)
@@ -59,7 +64,7 @@ namespace JwtUser.Repository.Repositories
                 .Where(x => x.IsSuccess == true && x.Rate != null && x.CompanyId == companyId)
                 .Sum(x => x.Rate);
 
-            var rate = Math.Floor((decimal)(rateSum / count * 10)!) / 10; 
+            var rate = Math.Floor((decimal)(rateSum / count * 10)!) / 10;
 
             return rate;
         }
@@ -75,8 +80,8 @@ namespace JwtUser.Repository.Repositories
         {
             var application = _dbContext.Applications.FirstOrDefault(x => x.Id == id);
 
-            application!.Rate = rate; 
-            _dbContext.SaveChanges(); 
+            application!.Rate = rate;
+            _dbContext.SaveChanges();
             return (decimal)application.Rate;
 
         }

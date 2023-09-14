@@ -17,7 +17,7 @@ namespace JwtUser.Core.Repositories
         public void ConfirmTransport(int id);
 
         public int GetTransportApplicationCount(int id);
-        Task<Dictionary<string, object>> GetApplicationsWithRATE(int id);
+        Task<List<Dictionary<string, object>>> GetApplicationsWithRATE(int id);
 
     }
 }
