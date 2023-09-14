@@ -10,12 +10,13 @@ namespace JwtUser.Core.Services
 {
     public interface IApplicationService : IGenericService<Application>
     {
-        Task<List<Application>> GetApplicationswithRelations(int id);
         public decimal Updaterating(int id, int rate);
         public decimal AverageRate(string id);
+        public void ConfirmTransport(int id);
 
         public int GetTransportApplicationCount(int id);
 
+        Task<Dictionary<string, object>> GetApplicationsWithRATE(int id);
 
     }
 }

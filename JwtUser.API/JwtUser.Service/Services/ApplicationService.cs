@@ -25,12 +25,15 @@ namespace JwtUser.Service.Services
             return _applicationRepository.AverageRate(id);
         }
 
-        public async Task<List<Application>> GetApplicationswithRelations(int id)
+        public void ConfirmTransport(int id)
         {
-            return await _applicationRepository.GetApplicationswithRelations(id);
+            _applicationRepository.ConfirmTransport(id);
         }
 
-       
+        public async Task<Dictionary<string, object>> GetApplicationsWithRATE(int id)
+        {
+            return await _applicationRepository.GetApplicationsWithRATE(id);
+        }
 
         public int GetTransportApplicationCount(int id)
         {
