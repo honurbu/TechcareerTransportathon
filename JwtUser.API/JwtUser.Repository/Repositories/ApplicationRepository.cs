@@ -92,5 +92,15 @@ namespace JwtUser.Repository.Repositories
             application!.IsSuccess = true;
             _dbContext.SaveChanges();
         }
+
+        public async Task<List<Application>> GetCompanyCarPersonel(string id)
+        {
+            return await _dbContext.Applications
+                .Where(x => x.CompanyId == id)
+                .Include(x => x.Cars)
+                .Include(x => x.AppPersonels)
+                    .ThenInclude(x => x.Personals).ThenInclude(x=>x.Appellation)
+                .ToListAsync();
+        }
     }
 }

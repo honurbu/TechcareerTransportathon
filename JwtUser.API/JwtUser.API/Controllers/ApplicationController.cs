@@ -110,5 +110,16 @@ namespace JwtUser.API.Controllers
             _applicationService.ConfirmTransport(id);
             return Ok("Transport successfully confirmed");
         }
+
+        [Authorize]
+        [HttpGet]
+        [Route("GetCrew")]
+        
+        public async Task<IActionResult> GetCrew()
+        {
+            var userId = _httpContextAccessor.HttpContext!.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            return Ok(await _applicationService.GetCompanyCarPersonel(userId)); 
+        }
     }
 }

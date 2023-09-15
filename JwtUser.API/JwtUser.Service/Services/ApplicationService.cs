@@ -35,6 +35,11 @@ namespace JwtUser.Service.Services
             return await _applicationRepository.GetApplicationsWithRATE(id);
         }
 
+        public async Task<List<Application>> GetCompanyCarPersonel(string id)
+        {
+            return await _applicationRepository.GetCompanyCarPersonel(id);
+        }
+
         public int GetTransportApplicationCount(int id)
         {
             return _applicationRepository.GetTransportApplicationCount(id);

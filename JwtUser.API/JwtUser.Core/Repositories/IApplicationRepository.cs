@@ -18,6 +18,7 @@ namespace JwtUser.Core.Repositories
 
         public int GetTransportApplicationCount(int id);
         Task<List<Dictionary<string, object>>> GetApplicationsWithRATE(int id);
+        Task<List<Application>> GetCompanyCarPersonel(string id);
 
     }
 }
