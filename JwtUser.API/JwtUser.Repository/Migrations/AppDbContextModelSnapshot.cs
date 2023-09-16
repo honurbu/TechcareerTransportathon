@@ -72,6 +72,12 @@ namespace JwtUser.Repository.Migrations
                     b.Property<int>("CarsId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CommentUser")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CompanyId")
                         .HasColumnType("nvarchar(450)");
 
@@ -87,6 +93,9 @@ namespace JwtUser.Repository.Migrations
                     b.Property<float?>("Rate")
                         .HasColumnType("real");
 
+                    b.Property<int?>("StatusId")
+                        .HasColumnType("int");
+
                     b.Property<int>("TransportId")
                         .HasColumnType("int");
 
@@ -98,6 +107,8 @@ namespace JwtUser.Repository.Migrations
                     b.HasIndex("CarsId");
 
                     b.HasIndex("CompanyId");
+
+                    b.HasIndex("StatusId");
 
                     b.HasIndex("TransportId");
 
@@ -239,6 +250,22 @@ namespace JwtUser.Repository.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Personals");
+                });
+
+            modelBuilder.Entity("JwtUser.Core.Entities.Status", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Statuses");
                 });
 
             modelBuilder.Entity("JwtUser.Core.Entities.Street", b =>
@@ -602,6 +629,10 @@ namespace JwtUser.Repository.Migrations
                         .WithMany("Applications")
                         .HasForeignKey("CompanyId");
 
+                    b.HasOne("JwtUser.Core.Entities.Status", "Statuses")
+                        .WithMany("Applications")
+                        .HasForeignKey("StatusId");
+
                     b.HasOne("JwtUser.Core.Entities.Transport", "Transports")
                         .WithMany()
                         .HasForeignKey("TransportId")
@@ -611,6 +642,8 @@ namespace JwtUser.Repository.Migrations
                     b.Navigation("Cars");
 
                     b.Navigation("Company");
+
+                    b.Navigation("Statuses");
 
                     b.Navigation("Transports");
                 });
@@ -792,6 +825,11 @@ namespace JwtUser.Repository.Migrations
             modelBuilder.Entity("JwtUser.Core.Entities.Personal", b =>
                 {
                     b.Navigation("AppPersonels");
+                });
+
+            modelBuilder.Entity("JwtUser.Core.Entities.Status", b =>
+                {
+                    b.Navigation("Applications");
                 });
 
             modelBuilder.Entity("JwtUser.Core.Entities.Town", b =>
