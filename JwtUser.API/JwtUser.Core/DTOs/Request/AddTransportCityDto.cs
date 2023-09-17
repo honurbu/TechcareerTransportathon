@@ -8,37 +8,36 @@ namespace JwtUser.Core.DTOs.Request
 {
     public class AddTransportCityDto
     {
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         public string? Description { get; set; }      //adres tarifi
-        public int bigitemCount { get; set; }
-        public int miditemCount { get; set; }
-        public int smallitemCount { get; set; }
+        public int? bigitemCount { get; set; }
+        public int? miditemCount { get; set; }
+        public int? smallitemCount { get; set; }
+
+
+
+        public int? StreetId { get; set; }
+
+
+        public int? HowCarryId { get; set; }
 
 
 
 
-        public int StreetId { get; set; }
+        public bool? isPackageHelpers { get; set; }
 
 
-        public int HowCarryId { get; set; }
-
-
-
-
-        public bool isPackageHelpers { get; set; }
-
-
-        public bool isInsurances { get; set; }
+        public bool? isInsurances { get; set; }
 
 
 
-        public string AppUserId { get; set; }
+        public string? AppUserId { get; set; }
 
         public int? ToStreetId { get; set; }
 
-        public bool isIntercity { get; set; }
-        public int Weight { get; set; }
+        public bool? isIntercity { get; set; }
+        public int? Weight { get; set; }
 
     }
 }

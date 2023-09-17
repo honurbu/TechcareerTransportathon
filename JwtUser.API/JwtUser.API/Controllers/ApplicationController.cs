@@ -123,7 +123,6 @@ namespace JwtUser.API.Controllers
         {
 
             var applications = await _applicationService.GetByIdAsync(id);
-
             int transportId = applications.TransportId;
             await TransportisShow(transportId);
 
